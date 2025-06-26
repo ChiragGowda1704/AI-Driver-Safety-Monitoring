@@ -1,94 +1,88 @@
-# 🚗 AI-Powered Driver Safety Monitoring System
+# 🚗 AI-Based Driver Safety Monitoring System
 
-## 🔍 Problem Statement
-
-In recent years, automotive innovation has focused on enhancing driver safety through smart monitoring systems. Understanding a driver’s posture, eye movements, facial expressions, and hand gestures can help determine their level of alertness, focus, and mood.
-
-Advanced driver monitoring systems (DMS) aim to:
-- Detect signs of fatigue, distraction, and drowsiness
-- Monitor driver activities like phone usage or eating
-- Enable smart, responsive features like alert generation, media control, and emergency assistance
-
-Tomorrow’s cars won’t just drive better — they’ll also understand you better.
+A real-time driver monitoring system built using deep learning and computer vision to enhance road safety by detecting drowsiness, yawning, eye blinks, and mood of the driver. The system triggers an alarm when signs of fatigue or distraction are detected, ensuring the driver remains alert on the road.
 
 ---
 
-## 💡 Solution Overview
+## 🧠 Core Features
 
-This system combines **Computer Vision**, **Heart Rate Monitoring**, and **Driving Behavior Classification** to intelligently assess driver safety and behavior in real-time.
+### 1. **Face Detection**
+- Utilizes `dlib`'s facial landmark detector to detect and track the driver's face in real time.
+- Enables the foundation for further analysis like eye, mouth, and emotion detection.
 
-### 👁️ Computer Vision Modules
-1. **Driver Identification** – Auto-restore driver preferences.
-2. **Activity Recognition**
-   - Deep learning-based recognition of risky behaviors like:
-     - Talking on the phone
-     - Eating while driving
-   - Triggers alerts to raise awareness.
-3. **Drowsiness & Distraction Detection**
-   - Detects yawning, eye closure, and loss of attention.
-   - Real-time alerts using visual + audio feedback.
-   - Eye-based Human-Machine Interface (HMI) control.
-4. **Hand Gesture Control**
-   - Neural networks recognize hand gestures for controlling car features like volume or AC.
-5. **Heart Rate Monitoring**
-   - A grip sensor in the steering wheel monitors heart rate.
-   - Alerts triggered for fatigue or irregular heartbeat.
+### 2. **Eye Blink Detection**
+- Tracks the driver’s eye movements using facial landmarks.
+- Counts the number of blinks per frame to monitor signs of fatigue.
+- If abnormal blinking patterns are detected, the system raises awareness.
 
----
+### 3. **Drowsiness Detection**
+- Detects when the driver’s eyes remain closed for a continuous number of frames.
+- Triggers a **warning alarm** when drowsiness is detected.
+- Helps prevent micro-sleep events while driving.
 
-## 🚦 Driving Style Classification (AI-Based)
+### 4. **Yawn Detection**
+- Analyzes mouth landmarks to identify yawning behavior.
+- Plays an **alert sound** if a yawn is detected, prompting the driver to stay alert.
 
-An AI model analyzes driving patterns and behaviors to detect **aggressive driving**, using:
-
-### 🔸 Input Criteria
-- Sudden acceleration or braking
-- Sharp turns
-- RPM patterns
-- Red light jumps
-- Tailgating or honking
-- Wrong-side overtakes
-
-### 🔸 Fuzzy Logic System
-1. **Fuzzification** – Converts sensor inputs into fuzzy variables.
-2. **Rules Evaluation** – Applies logic rules to assess risk levels.
-3. **Defuzzification** – Outputs clear classification of driving style.
-
-### 🧪 Dynamic Thresholds
-Thresholds (e.g. for speed or acceleration) adapt based on road type — city, highway, or national route.
-
----
-
-## 🆕 Novelty & Innovation
-
-Unlike traditional DMS systems that rely only on image processing, our solution is a **multi-modal approach** combining:
-- Visual data
-- Driving pattern analysis
-- Bio-sensor inputs (heart rate)
-
-This results in more **accurate**, **intelligent**, and **realistic** safety monitoring.
-
----
-
-## 🛠️ Implementation Plan
-
-### 1. Data Acquisition
-- Webcam monitors face and posture
-- Grip-based heart rate sensor embedded in steering wheel
-
-### 2. Preprocessing
-- Sensor and video data cleaned and normalized
-
-### 3. Feature Extraction
-- Deep learning models extract eye, face, and mouth landmarks
-- Audio/gesture/movement features analyzed
-
-### 4. Classification
-- Fuzzy logic system classifies driver state: Alert, Drowsy, Distracted, Joyful, etc.
+### 5. **Mood Detection**
+- Uses a trained deep learning model (TensorFlow) to classify driver emotion.
+- Can detect basic moods such as happy, sad, angry, or neutral.
+- Helps understand emotional state which could affect driving focus.
 
 ---
 
 ## 🚀 Getting Started
 
-### 📥 Clone the Repository
-```
+### 🔁 Clone the repository
+
 git clone https://github.com/ChiragGowda1704/AI-Driver-Safety-Monitoring.git
+## 📂 Required Files & Setup
+
+Before running the project, make sure you have the following essential files:
+
+### 🔸 Files to Download:
+- **Pre-trained Emotion Detection Model** – Used for real-time mood classification.
+- **Haarcascade XML Files** – For basic face and feature detection using OpenCV.
+- **Dlib Shape Predictor**
+  - File: `shape_predictor_68_face_landmarks.dat`
+  - Purpose: Accurately maps 68 facial landmarks for detecting eyes, mouth, and other key features.
+
+📁 **Place all downloaded files directly in the root directory of the project** so the scripts can access them without path issues.
+
+---
+
+## 📦 Dependency Installation
+
+Install all required Python libraries using pip:
+
+```
+pip install opencv-python dlib keras imutils numpy pygame tensorflow
+```
+## **🧪 How to Run the Modules**
+Each module is designed for a specific safety feature and can be run independently:
+
+▶️ Drowsiness Detection
+Detects if the driver’s eyes are closed for too long. Triggers an alarm to prevent micro-sleep.
+python drowsiness_detection.py
+
+▶️ Yawn Detection
+Analyzes mouth landmarks to detect yawning. If a yawn is detected, a warning alarm is triggered to keep the driver alert.
+python yawn.py
+
+▶️ Mood Recognition
+Uses a trained TensorFlow model to classify the driver's current mood (happy, sad, neutral, etc.) in real-time.
+python mood_recognition.py
+
+## 📬 Contact
+
+Feel free to connect with me or reach out if you have any questions, feedback, or ideas for improvements:
+
+🔗 [LinkedIn – Chirag Gowda](https://www.linkedin.com/in/chiraggowda17/)
+
+🐞 Found a bug or want to suggest a feature?  
+Raise an [issue](../../issues) or start a discussion!
+
+---
+
+> **🚗 Drive Safe. 💻 Code Smart. 🛡️ Stay Alert.**
+
